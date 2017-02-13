@@ -1,0 +1,10 @@
+#source env/bin/activate
+
+if [ -z "$BASEDIR" ]; then
+    source activate web_app_substance_d 
+    #export APP_SETTINGS="config.DevelopmentConfig"
+    #export DATABASE_URL="mysql+pymysql://localhost/rebalancer_dev?charset=utf8mb4"
+    #export DATABASE_URL="mysql+pymysql://min:123456@10.9.19.232/rebalancer_dev?charset=utf8mb4"
+    export PYTHONPATH=$PYTHONPATH:$(pwd)
+    export BASEDIR=$(pwd)
+fi
