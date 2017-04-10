@@ -1,0 +1,222 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+"set nocompatible | filetype plugin indent on | syn on
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+ "let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'maksimr/vim-jsbeautify'
+autocmd FileType javascript noremap <buffer> <leader>ff :call JsBeautify()<cr>
+autocmd FileType json noremap <buffer> <leader>ff :call JsonBeautify()<cr>
+autocmd FileType jsx noremap <buffer> <leader>ff :call JsxBeautify()<cr>
+autocmd FileType html noremap <buffer> <leader>ff :call HtmlBeautify()<cr>
+autocmd FileType css noremap <buffer> <leader>ff :call CSSBeautify()<cr>
+
+",ci  ,ca  ,cs
+Plugin 'https://github.com/scrooloose/nerdcommenter.git'
+
+":DirDiff
+Plugin 'DirDIff.vim'
+let g:DirDiffExcludes = "CVS,*.class,*.exe,.*.swp,.svn,.svn/*,.cache,.project,*.tgz,.settings,Thumbs.db"
+let g:DirDiffWindowSize = 8
+
+",ig
+Plugin 'nathanaelkane/vim-indent-guides'
+let g:indent_guides_guide_size=1
+
+Plugin 'vim-javascript'
+Plugin 'groenewege/vim-less'
+Plugin 'posva/vim-vue'
+Plugin 'jade.vim'
+Plugin 'matchit.zip'
+Plugin 'editorconfig-vim'
+
+Plugin 'instant-markdown.vim'
+let g:instant_markdown_autostart = 0
+"call :InstantMarkdownPreview
+
+Plugin 'Syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
+Plugin 'scrooloose/nerdtree.git'
+let NERDTreeShowBookmarks=1
+let g:NERDTreeWinSize=20
+map <C-n> :NERDTreeToggle<CR>
+
+Plugin 'Solarized'
+
+call vundle#end()            " required
+
+filetype plugin indent on    " required
+
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just
+" :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to
+" auto-approve removal
+"call :Sg to do vimgrep
+
+" Add by stauren
+" Begin ~/.vimrc
+
+syn on
+set mouse=""
+set number
+set autoindent
+set smartindent
+set showmatch
+set modelines=1
+
+" insert 2 space instead of tab
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
+"Set backspace
+set backspace=eol,start,indent
+
+"set fold
+set foldmethod=indent
+"open all folds, use zM to fold all, zR to open all
+set foldlevel=20
+
+set ruler
+set colorcolumn=100
+
+if (&enc!="utf-8")
+  set enc=utf-8
+endif
+set fileencodings=utf-8,gb18030,gbk,gb2312,ucs-bom,cp936,big5
+let &tenc=&enc
+set nobomb
+set list
+set listchars=tab:>?,trail:?
+
+set diffopt=filler,context:15
+
+" multi file editing
+map <C-J> <C-W>j<C-W>_
+map <C-K> <C-W>k<C-W>_
+map <C-L> <C-W><C-L>
+map <C-H> <C-W>h
+set wmh=0
+
+set hlsearch
+set incsearch
+set ignorecase
+
+"Set magic on
+set magic
+
+"No sound on errors.
+set noerrorbells
+set novisualbell
+set t_vb=
+
+set mat=2
+
+""""""""""""""""""""""""""""""
+" Statusline
+""""""""""""""""""""""""""""""
+"Always hide the statusline
+set laststatus=2
+
+function! CurDir()
+   let curdir = substitute(getcwd(), '/Users/sidliu/', "~/", "g")
+   return curdir
+endfunction
+
+"Format the statusline
+se statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
+
+"Set mapleader
+let mapleader = ","
+let g:mapleader = ","
+
+set cmdheight=1
+" file explore
+let g:netrw_winsize = 30
+map <leader>fe :Hexplore!<cr>
+
+"Tab configuration
+map <leader>n :tabnew %<cr>
+"map <C-l> :tabnext<cr>
+"map <C-h> :tabprevious<cr>
+
+" 用空格键来开关折叠
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+
+"let psc_style='cool'
+"colorscheme desert
+"colorscheme stauren
+set background=dark
+colorscheme solarized
+hi SpecialKey cterm=none gui=none term=none ctermbg=NONE guibg=NONE ctermfg=240 guifg=#585858
+hi NonText cterm=none,bold gui=none,bold term=none,bold ctermbg=NONE guibg=NONE ctermfg=240 guifg=#585858
+set cursorline
+"set cursorcolumn
+
+"Set 7 lines to the curors - when moving vertical..
+set so=7
+
+"Turn on WiLd menu
+set wildmenu
+
+"Support rhino js filetype extention
+au BufRead,BufNewFile *.rhino set ft=javascript
+
+"vue
+au BufNewFile,BufRead *.vue set filetype=javascript
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+au BufRead /etc/hosts set ft=conf
+
+"vimgrep, call :Sg /regExp/ ./**/*.js
+if exists(":Sg") != 2
+  if !exists("*s:Stgrep")
+    function s:Stgrep(...)
+      execute 'lv ' . join(a:000) . ' | lop'
+      if len(getloclist(0)) <= 0
+        execute 'lcl'
+      endif
+    endfunction
+  endif
+  command -nargs=* Sg :call s:Stgrep(<f-args>)
+endif
+
+if has("win32")
+  "let mysyntaxfile = "C:\Program Files\Vim\vimfiles\syntax\javascript.vim"
+  map <leader>s :source C:\Program Files\Vim\_vimrc
+  map <leader>e :e C:\Program Files\Vim\_vimrc<cr>
+  autocmd! bufwritepost _vimrc source C:\Program Files\Vim\_vimrc
+else
+  let mysyntaxfile = "~/.vim/syntax/javascript.vim"
+"Fast reloading of the .vimrc
+  map  <leader>s :source ~/.vimrc
+"Fast editing of .vimrc
+  map  <leader>e :e ~/.vimrc<cr>
+"When .vimrc is edited, reload it
+  autocmd! bufwritepost .vimrc source ~/.vimrc
+
+  "colorscheme stauren
+  set guifont=Consolas:h18
+  "cd ~/code/work/microblog
+endif
+
+" End ~/.vimrc
