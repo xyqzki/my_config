@@ -22,7 +22,7 @@ let NERDTreeShowBookmarks=1
 " use the F2 button to open or hide file explorer 
 map <F2> :NERDTreeToggle<CR>
 " automaticlly open the nerd tree
-autocmd vimenter * NERDTree
+" autocmd vimenter * NERDTree
 " let cursor on the current document when open this file instead of the nerd
 " tree
 autocmd VimEnter * wincmd p
