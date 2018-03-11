@@ -27,6 +27,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
    ref to http://blog.csdn.net/xyqzki/article/details/79130615, install C-lang
 
    error message：the ycmd server SHUT DOWN (restart with ‘:…low the instructions in the documentation.
+
 ```
 sudo yum install cmake -y
 cd ~/.vim/vundle/plugin/YouCompleteMe  
@@ -34,11 +35,7 @@ cd ~/.vim/vundle/plugin/YouCompleteMe
 ```
 
 	* when install Clang, we have error message:  CMake Error: your CXX compiler: "CMAKE_CXX_COMPILER-NOTFOUND" was not found
-	need to install g++
-
-```
-sudo yum install gcc-c++
-```
+	need to install g++, use sudo yum install gcc-c++
 ref:
 http://blog.csdn.net/netdalanhan/article/details/44600643
 
