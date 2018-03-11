@@ -34,7 +34,7 @@ cd ~/.vim/vundle/plugin/YouCompleteMe
 ./install.py --clang-completer
 ```
 
-	* when install Clang, we have error message:  CMake Error: your CXX compiler: "CMAKE_CXX_COMPILER-NOTFOUND" was not found
+	when install Clang, we have error message:  CMake Error: your CXX compiler: "CMAKE_CXX_COMPILER-NOTFOUND" was not found
 	need to install g++, use sudo yum install gcc-c++
 ref:
 http://blog.csdn.net/netdalanhan/article/details/44600643
