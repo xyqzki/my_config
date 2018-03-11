@@ -42,5 +42,6 @@ http://blog.csdn.net/netdalanhan/article/details/44600643
 * color scheme we need solarized
 
 # putty setup (option)
+
 	* color scheme choose ascii blue, then RGB is set to 85 85 255
 	* font size is set to 16-20
