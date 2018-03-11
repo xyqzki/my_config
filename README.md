@@ -23,7 +23,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 * install auto-complete plugin YouCompleteMe
 	* bug1：need vim version 7.4 above
    ref to http://blog.csdn.net/xyqzki/article/details/79130615, upgrade vim to version 8
--- bug2: the ycmd server SHUT DOWN (restart with ':...low the instructions in the documentation.
+	* bug2: the ycmd server SHUT DOWN (restart with ':...low the instructions in the documentation.
    ref to http://blog.csdn.net/xyqzki/article/details/79130615, install C-lang
 
    error message：the ycmd server SHUT DOWN (restart with ‘:…low the instructions in the documentation.
@@ -32,7 +32,7 @@ sudo yum install cmake -y
 cd ~/.vim/vundle/plugin/YouCompleteMe  
 ./install.py --clang-completer
 ```
--- when install Clang, we have error message:  CMake Error: your CXX compiler: "CMAKE_CXX_COMPILER-NOTFOUND" was not found
+	* when install Clang, we have error message:  CMake Error: your CXX compiler: "CMAKE_CXX_COMPILER-NOTFOUND" was not found
 	need to install g++
 ```
 sudo yum install gcc-c++
@@ -40,8 +40,8 @@ sudo yum install gcc-c++
 ref:
 http://blog.csdn.net/netdalanhan/article/details/44600643
 
-- color scheme we need solarized
+* color scheme we need solarized
 
 # putty setup (option)
-    - color scheme choose ascii blue, then RGB is set to 85 85 255
-    - font size is set to 16-20
+	* color scheme choose ascii blue, then RGB is set to 85 85 255
+	* font size is set to 16-20
