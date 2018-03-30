@@ -12,7 +12,9 @@ env: centos or mac osx
 # steps for setting up vimrc and tmux.conf
 
 * git clone https://github.com/xyqzki/my_config
-* copy tmux.conf ~/.tmux.conf
+* cp tmux.conf ~/.tmux.conf
+ * tmux source-file ~/.tmux.conf
+ * don't source ~/.tmux.conf
 * copy vimrc ~/.vimrc
 * install vundle
 ```
