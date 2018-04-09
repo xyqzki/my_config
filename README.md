@@ -9,12 +9,18 @@ before using the .env file, you should install the autoenv package
 
 env: centos or mac osx
 
+# install anaconda
+linux
+* https://repo.continuum.io/archive/Anaconda3-5.1.0-Linux-x86_64.sh
+mac
+* https://repo.continuum.io/archive/Anaconda3-5.1.0-MacOSX-x86_64.pkg
+
 # steps for setting up vimrc and tmux.conf
 
 * git clone https://github.com/xyqzki/my_config
 * cp tmux.conf ~/.tmux.conf
- * tmux source-file ~/.tmux.conf
- * don't source ~/.tmux.conf
+	* tmux source-file ~/.tmux.conf
+ 	* don't source ~/.tmux.conf
 * copy vimrc ~/.vimrc
 * install vundle
 ```
@@ -32,7 +38,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 ```
 sudo yum install cmake -y
-cd ~/.vim/vundle/plugin/YouCompleteMe  
+cd ~/.vim/vundle/plugin/YouCompleteMe  or [.vim/bundle/plugin/YouCompleteMe] 
 ./install.py --clang-completer
 ```
 
