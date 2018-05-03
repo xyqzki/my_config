@@ -48,6 +48,11 @@ ref:
 http://blog.csdn.net/netdalanhan/article/details/44600643
 
 * color scheme we need solarized
+* if we cannot see the line number, please try to change the colorscheme to desert. Open vim
+```
+:colorscheme desert
+```
+then change the colorscheme line in vimrc file
 
 # putty setup (option)
 
